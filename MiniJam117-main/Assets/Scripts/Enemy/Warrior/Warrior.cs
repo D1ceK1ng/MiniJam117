@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Warrior : Enemy
 {
-    [SerializeField] private Player _player;
+    private Player _player;
     public override IMovable IMovable => _iMovable;
     public override float Speed { get => _speed; set => _speed = value; }
     private void Awake() 
     {
+      _player = FindObjectOfType<Player>();
       _iMovable = new DirectedEnemyMovement(transform, _player.transform, Speed);
     }
 }
