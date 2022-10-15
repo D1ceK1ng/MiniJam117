@@ -7,7 +7,7 @@ public abstract class Health : MonoBehaviour
    [SerializeField] private float _currentHealth = 5;
    private float _maxHealth;
    public event Action OnChangeHealth;
-   public event Action OnDestroy;
+   public event Action<Health> OnDestroy;
    public abstract IDamageAccepting IDamageAccepting { get; set; }
     public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
     public float MaxHealth =>_maxHealth;
@@ -22,7 +22,7 @@ public abstract class Health : MonoBehaviour
      OnChangeHealth?.Invoke();
      if (CurrentHealth <= 0)
      {
-        OnDestroy?.Invoke();
+        OnDestroy?.Invoke(this);
      }
    }
 }

@@ -6,15 +6,15 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _destroyTime = 0.6f;
     [SerializeField] private float _damage = 4;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private float _speed = 3;
     public float Damage => _damage;
     private void Start() 
     {
         Destroy(gameObject,_destroyTime);
     }
-    public void Move(float fireRange, Vector2 distance, float bulletForce)
+    private void Update() 
     {
-      _rigidbody2D.AddForce(fireRange * distance.normalized * bulletForce, ForceMode2D.Impulse);
+      transform.Translate(Vector2.right * _speed * Time.deltaTime);
     }
 
 }

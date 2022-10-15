@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorFactory : GenericFactory<Warrior>,IEnemyFactory
+public class RangerFactory : GenericFactory<Ranger>,IEnemyFactory
 {
     [SerializeField] private Player _player;
     [SerializeField] private Vector2 _additionalTime = new Vector2(5,10);
@@ -20,5 +20,4 @@ public class WarriorFactory : GenericFactory<Warrior>,IEnemyFactory
         yield return new WaitForSeconds(_enemyCreator.GetRandomTime(_additionalTime));
         StartCoroutine(CoolDown());
     }
-
 }

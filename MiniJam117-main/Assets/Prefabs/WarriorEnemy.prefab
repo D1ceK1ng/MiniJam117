@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 185019970961070848}
   - component: {fileID: 2562511913314158859}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: WarriorEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bc5b6037c2ec84ba0e14fe7f1738d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 5
-  _coolDownTime: 2
+  _currentHealth: 7
 --- !u!114 &2562511913314158859
 MonoBehaviour:
   m_ObjectHideFlags: 0
