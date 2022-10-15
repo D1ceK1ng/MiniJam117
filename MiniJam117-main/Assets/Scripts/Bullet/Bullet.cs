@@ -12,9 +12,9 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject,_destroyTime);
     }
-    public void Move(float fireRange, Vector2 distance, float bulletForce)
+    public void Move(float fireRange,Vector2 bulletAngle, float bulletForce)
     {
-      _rigidbody2D.AddForce(fireRange * distance.normalized * bulletForce, ForceMode2D.Impulse);
+      _rigidbody2D.AddForce(fireRange * bulletForce * bulletAngle, ForceMode2D.Impulse);
     }
 
 }
