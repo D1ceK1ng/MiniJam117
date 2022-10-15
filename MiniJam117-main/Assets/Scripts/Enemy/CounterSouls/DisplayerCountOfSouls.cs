@@ -15,7 +15,7 @@ public class DisplayerCountOfSouls : MonoBehaviour
     private void AddDeadSoul()
     {
         _countOfSouls++;
-        _text.text = $"KILLED SOULS: {_countOfSouls}";
+        _text.text = $"Souls collected: {_countOfSouls}";
     }
     private void OnDisable()
     {
