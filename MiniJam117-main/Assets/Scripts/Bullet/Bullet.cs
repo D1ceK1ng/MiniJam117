@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject hitEffect;
-
-    void OnCollisionEnter2D(Collision2D collision)
+    [SerializeField] private float _destroyTime = 0.6f;
+    [SerializeField] private float _damage = 4;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
+    public float Damage => _damage;
+    private void Start() 
     {
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(hitEffect, 5f);
-        Destroy(gameObject);
+        Destroy(gameObject,_destroyTime);
     }
+    public void Move(float fireRange, Vector2 distance, float bulletForce)
+    {
+      _rigidbody2D.AddForce(fireRange * distance.normalized * bulletForce, ForceMode2D.Impulse);
+    }
+
 }

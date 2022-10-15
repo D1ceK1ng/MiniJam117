@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IAttackable
 {
-     public float Damage {get;set;}
-     public void Attack();
+     public Health Health {get;set;}
+     public void Attack(float damage);
 }

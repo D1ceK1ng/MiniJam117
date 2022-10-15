@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5393531083345922165}
   - component: {fileID: 5393531083345922166}
   - component: {fileID: 5393531083345922162}
+  - component: {fileID: 7598844571064640433}
+  - component: {fileID: 8556138163938253460}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -147,8 +149,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b4587940f2ed04f86daf5249258323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 2
   _speed: 4
   _rigidbody2D: {fileID: 5393531083345922164}
+  _health: {fileID: 7598844571064640433}
+--- !u!114 &7598844571064640433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393531083345922168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f477712a5af5e0488439984d491a002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 20
+  _coolDownTime: 1
+--- !u!114 &8556138163938253460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393531083345922168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37f8e01f3cd34948b223a162c3ae468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5393531083345922162}
 --- !u!1 &5393531084101392903
 GameObject:
   m_ObjectHideFlags: 0
