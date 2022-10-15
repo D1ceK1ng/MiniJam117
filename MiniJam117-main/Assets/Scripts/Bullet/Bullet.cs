@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject hitEffect;
+    
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void Update()
     {
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(hitEffect, 5f);
+        Destroy(gameObject,.6f);
+    }
+
+    void OnColliderEnter(Collider2D collider2D)
+    {
         Destroy(gameObject);
     }
 }

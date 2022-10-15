@@ -1,33 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform firePoint;
-    public GameObject bulletPrefab;
+    public GameObject BulletPrefab;
 
-    public float bulletForce = 20f;
 
-    // Start is called before the first frame update
-    void Start()
+    public float BulletForce;
+
+  
+    private PlayerController _playerInput;
+    private bool _canShoot;
+    private const float FireRange = 4f;
+
+    void Awake()
     {
-        
+        _playerInput = new PlayerController();
+        _playerInput.PlayerInput.Shoot.started += OnShoot;
+        _playerInput.PlayerInput.Shoot.canceled += OnShoot;
     }
 
+    private void OnShoot(InputAction.CallbackContext obj)
+    {
+        _canShoot = obj.ReadValueAsButton();
+
+        if (_canShoot)
+            Shoot();
+    }
+
+    void OnEnable()
+    {
+        _playerInput.PlayerInput.Enable();
+    }
+
+    void OnDisable()
+    {
+        _playerInput.PlayerInput.Disable();
+    }
+   
+    
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Vector2 distance = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+        Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
+        rigidBody.AddForce(FireRange * distance.normalized * BulletForce, ForceMode2D.Impulse);
     }
 }
