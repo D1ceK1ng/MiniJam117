@@ -11,6 +11,15 @@ public class PlayerHealth : Health
     {
         IDamageAccepting = new SimpleDamageHandler();
     }
+    private void Start() 
+    {
+        OnDestroy += DestroyPlayer;
+    }
+    private void DestroyPlayer(Health health)
+    {
+        FindObjectOfType<LoaderScene>().OpenMenu();
+       Destroy(health.gameObject);
+    }
     public override void TryApplyingDamage(float damage)
     {
         if(_isReloaded)
@@ -24,6 +33,10 @@ public class PlayerHealth : Health
     _isReloaded = false;
     yield return new WaitForSeconds(_coolDownTime);
     _isReloaded = true;
+   }
+   private void OnDisable() 
+   {
+    OnDestroy -= DestroyPlayer;
    }
 
 }
