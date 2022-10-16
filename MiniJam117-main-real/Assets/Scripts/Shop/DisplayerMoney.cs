@@ -8,7 +8,7 @@ public class DisplayerMoney : MonoBehaviour
   [SerializeField] private Text _text;
   private void Awake() 
   {
-    _wallet.OnChangeCountOfMoney += DisplayMoney;
+    _wallet.OnChangeCountOfSouls += DisplayMoney;
   }
   private void Start() 
   {
@@ -16,10 +16,10 @@ public class DisplayerMoney : MonoBehaviour
   }
   private void DisplayMoney()
   {
-    _text.text = _wallet.CountOfMoney.ToString();
+    _text.text = _wallet.CountOfSouls.ToString();
   }
   private void OnDisable() 
   {
-     _wallet.OnChangeCountOfMoney -= DisplayMoney;
+     _wallet.OnChangeCountOfSouls -= DisplayMoney;
   }
 }

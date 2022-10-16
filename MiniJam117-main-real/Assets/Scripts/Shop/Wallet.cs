@@ -5,26 +5,29 @@ using System;
 public class Wallet : MonoBehaviour
 {
    [SerializeField] private BuyerItem _buyerItem;
-   [SerializeField] private int _countOfMoney;
-   public int CountOfMoney => _countOfMoney;
-   public event Action OnChangeCountOfMoney;
+   [SerializeField] private int _countOfSouls;
+   public int CountOfSouls => _countOfSouls;
+   public event Action OnChangeCountOfSouls;
    private void Awake() 
    {
-    SavableMoney savableMoney = Loader<SavableMoney>.Load(new SavableMoney());
-    if (savableMoney != null)
+    SavableCountOfSouls savableCountOfSouls = Loader<SavableCountOfSouls>.Load(new SavableCountOfSouls());
+    if (savableCountOfSouls != null)
     {
-        _countOfMoney = int.Parse(savableMoney.CountOfMoney);
+        if(savableCountOfSouls.CountOfSouls != "")
+        {
+        _countOfSouls = int.Parse(savableCountOfSouls.CountOfSouls);
+        }
     }
-    _buyerItem.OnBuy += DecreaseCountMoney;
+    //_buyerItem.OnBuy += DecreaseCountMoney;
    }
    private void DecreaseCountMoney(Item item)
    {
-    _countOfMoney -= item.Price;
-    OnChangeCountOfMoney?.Invoke();
+    _countOfSouls -= item.Price;
+    OnChangeCountOfSouls?.Invoke();
    }
-   public void IncreaseCountOfMoney(int countOfAdditionalMoney)
+   public void IncreaseCountOfMoney(int countOfAdditionalSoul)
    {
-    _countOfMoney += countOfAdditionalMoney;
-    OnChangeCountOfMoney?.Invoke();
+    _countOfSouls += countOfAdditionalSoul;
+    OnChangeCountOfSouls?.Invoke();
    }
 }

@@ -10,6 +10,7 @@ public class StarterNewGame : MonoBehaviour
         Saver<SavableInterface>.Save(new SavableInterface(new List<string>()));
         Saver<SavablePassedDoors>.Save(new SavablePassedDoors(new List<string>()));
 
+        Saver<SavableCountOfSouls>.Save(new SavableCountOfSouls());
         Saver<SavableHealth>.Save(new SavableHealth());
         Saver<SavableMusicSettings>.Save(new SavableMusicSettings());
     }

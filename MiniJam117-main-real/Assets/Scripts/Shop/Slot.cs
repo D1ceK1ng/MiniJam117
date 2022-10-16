@@ -18,7 +18,7 @@ public class Slot : MonoBehaviour
    }
    public void OnClick()
    {
-    if(_wallet.CountOfMoney - _item.Price >= 0)
+    if(_wallet.CountOfSouls - _item.Price >= 0)
     {
      _buyerItem.BuyItem(_item);
     }

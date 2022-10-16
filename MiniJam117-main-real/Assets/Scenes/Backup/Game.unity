@@ -30734,7 +30734,9 @@ GameObject:
   - component: {fileID: 1223127769}
   - component: {fileID: 1223127768}
   - component: {fileID: 1223127771}
+  - component: {fileID: 1223127773}
   - component: {fileID: 1223127770}
+  - component: {fileID: 1223127772}
   m_Layer: 0
   m_Name: CounterOfSouls
   m_TagString: Untagged
@@ -30829,7 +30831,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _counterSouls: {fileID: 1223127770}
+  _wallet: {fileID: 1223127772}
   _text: {fileID: 1223127768}
+--- !u!114 &1223127772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223127766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fd980394d89fc4fbf66bed62b66106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buyerItem: {fileID: 0}
+  _countOfSouls: 0
+--- !u!114 &1223127773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223127766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfcbb1b4344745419d3f42c89f2cb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 1223127772}
 --- !u!114 &1388928194 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8422023374436241994, guid: 44c2784a761d77f448b62238956d893e, type: 3}
