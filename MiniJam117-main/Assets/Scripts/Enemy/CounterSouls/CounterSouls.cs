@@ -9,8 +9,7 @@ public class CounterSouls : MonoBehaviour
     public event Action OnKillEnemy;
     private void Awake() 
     {
-        _enemyFactories.Add(FindObjectOfType<WarriorFactory>());
-        _enemyFactories.Add(FindObjectOfType<RangerFactory>());
+        _enemyFactories = FindObjectsOfType<MonoBehaviour>().OfType<IEnemyFactory>().ToList();
         if(_enemyFactories.All(e=>e != null))
         {
         _enemyFactories.ForEach(e=>e.OnCreateEnemy += AddEnemy);

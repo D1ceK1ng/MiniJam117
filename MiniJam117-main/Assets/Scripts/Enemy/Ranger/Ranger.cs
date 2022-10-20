@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ranger : Enemy
 {
     [SerializeField] private float _range = 4;
+    [SerializeField] private float _stopDistance = 8;
     [SerializeField] private CreatorBullet _creatorBullet;
     private bool _isCoolDown = true;
     private float _coolDownTime = 3;
@@ -16,7 +17,7 @@ public class Ranger : Enemy
     private void OnEnable() 
     {
        _iAttackable = new RangerAttack(_player.Health, transform, _player.transform,_range,_creatorBullet);
-      _iMovable = new DirectedEnemyMovement(transform, _player.transform, Speed);
+      _iMovable = new RangerMovement(transform, _player.transform,_canvas,  Speed, _stopDistance, _animator);
     }
     private void FixedUpdate() 
     {

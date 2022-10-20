@@ -8,9 +8,10 @@ public class MoveableCamera : MonoBehaviour
     [SerializeField] private float _rightLimit = 100;
      [SerializeField] private float _bottomLimit = -100;
      [SerializeField] private float _upperLimit =100;
-    private void Start() {
-    _player = FindObjectOfType<Player>();
-     }    
+    private void Start() 
+    {
+     _player = FindObjectOfType<Player>();
+    }    
    private void Update()
     {
 

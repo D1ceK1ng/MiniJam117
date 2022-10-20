@@ -2,22 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(TimerOfGameObject))]
 public class RangerFactory : GenericFactory<Ranger>,IEnemyFactory
 {
     [SerializeField] private Player _player;
     [SerializeField] private Vector2 _additionalTime = new Vector2(5,10);
     private EnemyCreator _enemyCreator;
+    [SerializeField] private TimerOfGameObject _timerOfGameObject;
     public event Action<Enemy> OnCreateEnemy;
     private void OnEnable() 
     {
          _enemyCreator = new EnemyCreator();
-         StartCoroutine(CoolDown());
+        _timerOfGameObject.SetTimer(_enemyCreator.GetRandomTime(_additionalTime),TryCreating);
     }
-    private IEnumerator CoolDown()
-    {
-        OnCreateEnemy?.Invoke(InstantiateObject(_enemyCreator.RandomCircle(_player.transform.position)));
-        yield return new WaitForSeconds(_enemyCreator.GetRandomTime(_additionalTime));
-        StartCoroutine(CoolDown());
-    }
+    private void TryCreating() => OnCreateEnemy?.Invoke(InstantiateObject(_enemyCreator.RandomCircle(_player.transform.position)));
+
 }

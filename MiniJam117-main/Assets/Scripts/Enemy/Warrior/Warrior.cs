@@ -12,6 +12,6 @@ public class Warrior : Enemy
     private void OnEnable() 
     {
        _iAttackable = new MiddleAttack(_player.Health);
-      _iMovable = new DirectedEnemyMovement(transform, _player.transform, Speed);
+      _iMovable = new DirectedEnemyMovement(transform, _player.transform,_canvas, Speed);
     }
 }
